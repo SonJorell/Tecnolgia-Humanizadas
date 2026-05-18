@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback } from 'react'
 import { idb } from '../../lib/indexeddb'
 import Card from '../../components/ui/Card'
 import Badge from '../../components/ui/Badge'
-import { Search as SearchIcon, Filter } from 'lucide-react'
+import { Search as SearchIcon } from 'lucide-react'
 
 type TipoFiltro = 'todos' | 'guia' | 'tarea' | 'evaluacion' | 'recurso'
 
@@ -12,7 +12,7 @@ export default function BuscadorAlumno() {
   const [filtroTipo, setFiltroTipo] = useState<TipoFiltro>('todos')
   const [searched, setSearched] = useState(false)
 
-  const debounceRef = React.useRef<ReturnType<typeof setTimeout>>()
+  const debounceRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleSearch = useCallback((value: string) => {
     setQuery(value)

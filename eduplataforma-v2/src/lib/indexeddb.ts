@@ -76,7 +76,7 @@ interface EduDB extends DBSchema {
   }
 }
 
-type StoreName = keyof EduDB
+type StoreName = 'perfiles' | 'materiales' | 'sync_queue' | 'entregas' | 'cursos' | 'inscripciones'
 
 let dbInstance: IDBPDatabase<EduDB> | null = null
 
