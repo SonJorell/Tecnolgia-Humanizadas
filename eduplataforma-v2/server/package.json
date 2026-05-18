@@ -1,0 +1,11 @@
+{
+  "name": "eduplataforma-server",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.4",
+    "express": "^4.18.0"
+  }
+}

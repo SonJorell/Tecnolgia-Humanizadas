@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #f2f6fb;
+  color: #0d1b2a;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dark body {
+  background-color: #131c28;
+  color: #e2eaf4;
+}
+
+/* ═══════════════════════════════════ */
+/* Animations                          */
+/* ═══════════════════════════════════ */
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDownFade {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes xpFloat {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  80%  { opacity: 1; transform: translateY(-48px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-64px) scale(0.9); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes bounce-in {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.05); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.xp-float {
+  position: fixed;
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: #e8a020;
+  font-size: 22px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: xpFloat 1.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUpFade 300ms ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDownFade 300ms ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ═══════════════════════════════════ */
+/* Interactive effects                 */
+/* ═══════════════════════════════════ */
+
+.card-hover {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+}
+
+.progress-fill {
+  transition: width 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.conn-banner {
+  transition: background-color 500ms ease;
+}
+
+/* ═══════════════════════════════════ */
+/* Scrollbar                           */
+/* ═══════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.25);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ═══════════════════════════════════ */
+/* Layout                             */
+/* ═══════════════════════════════════ */
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.sidebar {
+  display: none;
+}
+
+.bottom-nav {
+  display: flex;
+}
+
+@media (min-width: 640px) {
+  .stats-row   { grid-template-columns: repeat(2, 1fr) !important; }
+  .cursos-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (min-width: 900px) {
+  .app-layout  { display: grid; grid-template-columns: 240px 1fr; }
+  .sidebar     { display: flex; }
+  .bottom-nav  { display: none !important; }
+  .stats-row   { grid-template-columns: repeat(4, 1fr) !important; }
+}
+
+@media (min-width: 1200px) {
+  .main-content { max-width: 1200px; margin: 0 auto; }
+  .canjes-grid { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+/* ═══════════════════════════════════ */
+/* Utilities                           */
+/* ═══════════════════════════════════ */
+
+.skeleton {
+  background: linear-gradient(90deg, #e8ecf2 25%, #f2f6fb 50%, #e8ecf2 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #1e2a3a 25%, #253346 50%, #1e2a3a 75%);
+  background-size: 200% 100%;
+}
